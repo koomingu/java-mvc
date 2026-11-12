@@ -26,9 +26,8 @@ class ServletTest {
 
         assertThat(response.statusCode()).isEqualTo(200);
 
-        // expected를 0이 아닌 올바른 값으로 바꿔보자.
-        // 예상한 결과가 나왔는가? 왜 이런 결과가 나왔을까?
-        assertThat(Integer.parseInt(response.body())).isEqualTo(0);
+        // 인스턴스 변수가 세 요청에서 공유되어 1, 2, 3으로 증가한다.
+        assertThat(Integer.parseInt(response.body())).isEqualTo(3);
     }
 
     @Test
@@ -48,8 +47,7 @@ class ServletTest {
 
         assertThat(response.statusCode()).isEqualTo(200);
 
-        // expected를 0이 아닌 올바른 값으로 바꿔보자.
-        // 예상한 결과가 나왔는가? 왜 이런 결과가 나왔을까?
-        assertThat(Integer.parseInt(response.body())).isEqualTo(0);
+        // 지역 변수는 요청마다 0으로 초기화되어 항상 1을 응답한다.
+        assertThat(Integer.parseInt(response.body())).isEqualTo(1);
     }
 }

@@ -16,7 +16,7 @@ public abstract class HttpUtils {
 
     public static HttpResponse<String> send(final String path) {
         final var request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:8080" + path))
+                .uri(URI.create("http://localhost:" + Integer.getInteger("study.http.port", 8080) + path))
                 .timeout(Duration.ofSeconds(3))
                 .build();
 

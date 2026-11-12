@@ -33,7 +33,9 @@ dependencies {
 }
 
 test {
-    maxParallelForks = 3
+    // 서블릿 학습 테스트는 같은 포트를 사용하므로 순서대로 실행한다.
+    maxParallelForks = 1
+    systemProperty 'study.http.port', System.getProperty('study.http.port', '8080')
     useJUnitPlatform()
 }
 

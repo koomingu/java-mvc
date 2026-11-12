@@ -52,7 +52,7 @@ public class TomcatStarter {
 
     private Connector createConnector() {
         final var connector = new Connector();
-        connector.setPort(8080);
+        connector.setPort(Integer.getInteger("study.http.port", 8080));
         return connector;
     }
 
